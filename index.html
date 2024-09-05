@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodExpress</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Css/styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">FoodExpress</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#social">Social</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Container -->
+    <div class="cart-container position-fixed bottom-0 end-0 m-3">
+        <button id="cart-btn" class="btn btn-primary"><i class="fas fa-shopping-cart me-2"></i> Cart (<span id="cart-count">0</span>)</button>
+        <div id="cart" class="cart bg-light p-3 rounded shadow-sm d-none position-absolute end-0 bottom-100">
+            <button id="close" class="btn-close"></button>
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items" class="list-unstyled"></ul>
+            <div id="total-amount" class="fw-bold">Total: R0.00</div>
+            <div class="d-flex justify-content-between mt-3">
+                <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
+                <button id="checkout" class="btn btn-success">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-section text-center text-white py-5">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Left side: Text and Buttons -->
+            <div class="hero-content">
+                <h1 class="display-4">Welcome to FoodExpress</h1>
+                <p class="lead">Embark on a culinary adventure with FoodExpress! Our menu features mouth-watering dishes prepared with the freshest ingredients. Indulge in our delectable burgers, irresistible pizzas, and refreshing beverages. Each meal is a burst of flavor designed to delight your taste buds. Enjoy swift delivery and experience dining like never before. Dive into a world of taste and satisfaction with every bite!</p>
+                <div class="button-group">
+                    <a href="#menu" class="btn btn-light me-2">View the Menu</a>
+                    <a href="#contact" class="btn btn-light">Send Request</a>
+                </div>
+            </div>
+            <!-- Right side: Lottie Animated Burger -->
+            <div class="animated-burger" id="burgerAnimation"></div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Menu</h2>
+            <div class="filter-btn-group mb-4 d-flex justify-content-center flex-wrap">
+                <button class="filter-btn btn" data-filter="all">All</button>
+                <button class="filter-btn btn" data-filter="burgers">Burgers</button>
+                <button class="filter-btn btn" data-filter="pizzas">Pizzas</button>
+                <button class="filter-btn btn" data-filter="salads">Salads</button>
+                <button class="filter-btn btn" data-filter="beverages">Beverages</button>
+                <button class="filter-btn btn" data-filter="sides">Sides</button>
+                <button class="filter-btn btn" data-filter="quick-bite">Quick-bite</button>
+            </div>
+            <div class="row">
+                <!-- Menu Items for Burgers -->
+                <div class="col-md-4 menu-item burgers mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/beef2.jpg" class="card-img-top" alt="Beef Burger">
+                        <div class="card-body text-center">
+                            <p class="text">Beef Burger</p>
+                            <p class="price">R73.00</p>
+                            <button class="btn btn-primary" data-add-to-cart id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item burgers mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/Toasted Sandwich.jpg" class="card-img-top" alt="Sandwich">
+                        <div class="card-body text-center">
+                            <p class="text">Toasted Sandwich</p>
+                            <p class="price">R65.00</p>
+                            <button class="btn btn-primary" data-add-to-cart id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item burgers mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/tacos.jpg" class="card-img-top" alt="Tacos">
+                        <div class="card-body text-center">
+                            <p class="text">Mexican Tacos</p>
+                            <p class="price">R69.90</p>
+                            <button class="btn btn-primary" data-add-to-cart id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Items for Pizzas -->
+                <div class="col-md-4 menu-item pizzas mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/pizza5.jpg" class="card-img-top" alt="Pepperoni Pizza">
+                        <div class="card-body text-center">
+                            <p class="text">Pepperoni Pizza</p>
+                            <p class="price">R45.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item pizzas mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/pizza1.jpg" class="card-img-top" alt="Margherita Pizza">
+                        <div class="card-body text-center">
+                            <p class="text">Margherita Pizza</p>
+                            <p class="price">R40.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item pizzas mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/pizza3.jpg" class="card-img-top" alt="Veggie Pizza">
+                        <div class="card-body text-center">
+                            <p class="text">Veggie Pizza</p>
+                            <p class="price">R50.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Items for Salads -->
+                <div class="col-md-4 menu-item salads mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/salad6.jpg" class="card-img-top" alt="Caesar Salad">
+                        <div class="card-body text-center">
+                            <p class="text">Caesar Salad</p>
+                            <p class="price">R63.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item salads mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/salad5.jpg" class="card-img-top" alt="Quinoa Salad">
+                        <div class="card-body text-center">
+                            <p class="text">Quinoa Salad</p>
+                            <p class="price">R55.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item salads mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/salad3.jpg" class="card-img-top" alt="Fruit Salad">
+                        <div class="card-body text-center">
+                            <p class="text">Fruit Salad</p>
+                            <p class="price">R50.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Items for Beverages -->
+                <div class="col-md-4 menu-item beverages mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/drink1.jpg" class="card-img-top" alt="Fresh Juice">
+                        <div class="card-body text-center">
+                            <p class="text">Fresh Juice</p>
+                            <p class="price">R25.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item beverages mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/cola.jpg" class="card-img-top" alt="Soda">
+                        <div class="card-body text-center">
+                            <p class="text">Sugar Free Cola</p>
+                            <p class="price">R20.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item beverages mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/latte.jpg" class="card-img-top" alt="Coffee">
+                        <div class="card-body text-center">
+                            <p class="text">Coffee</p>
+                            <p class="price">R30.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Items for Sides -->
+                <div class="col-md-4 menu-item sides mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/Ramen.jpg" class="card-img-top" alt="Ramen">
+                        <div class="card-body text-center">
+                            <p class="text">Instant Ramen</p>
+                            <p class="price">R60.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item sides mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/wings2.jpg" class="card-img-top" alt="Wings">
+                        <div class="card-body text-center">
+                            <p class="text">Collection of Wings</p>
+                            <p class="price">R25.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item sides mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/rings.jpg" class="card-img-top" alt="Onion Rings">
+                        <div class="card-body text-center">
+                            <p class="text">Onion Rings</p>
+                            <p class="price">R30.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu Items for Quick-bite -->
+                <div class="col-md-4 menu-item quick-bite mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/fried.jpg" class="card-img-top" alt="Spicy Fried Shrimp">
+                        <div class="card-body text-center">
+                            <p class="text">Spicy Fried Shrimp</p>
+                            <p class="price">R35.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item quick-bite mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/samosa.jpg" class="card-img-top" alt="Vegetable Samosa">
+                        <div class="card-body text-center">
+                            <p class="text">Vegetable Samosa</p>
+                            <p class="price">R20.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-item quick-bite mb-4 fade-in position-relative">
+                    <div class="card">
+                        <img src="img/rolls.jpg" class="card-img-top" alt="Spring Rolls">
+                        <div class="card-body text-center">
+                            <p class="text">Spring Rolls</p>
+                            <p class="price">R30.00</p>
+                            <button class="btn btn-primary" id="buy"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <div class="row mb-5">
+                <!-- Contact Form Example -->
+                <div class="col-md-8 offset-md-2">
+                    <form>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Choose a category</label>
+                            <select id="category" name="category" class="form-control" required>
+                                <option value="">--Please choose an option--</option>
+                                <option value="order">Order Issue</option>
+                                <option value="menu">Menu Inquiry</option>
+                                <option value="location">Location Information</option>
+                                <option value="catering">Catering Request</option>
+                                <option value="feedback">General Feedback</option>
+                                <option value="complaint">Complaint</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section id="social" class="py-5 bg-light text-center">
+        <div class="container">
+            <h2 class="mb-4">Follow Us</h2>
+            <div class="social-icons d-flex justify-content-center">
+                <a href="https://facebook.com" class="social-icon mx-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com" class="social-icon mx-2"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://pinterest.com" class="social-icon mx-2"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://youtube.com" class="social-icon mx-2"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>FoodExpress is your go-to spot for delicious fast food. We offer a variety of meals made from fresh ingredients and delivered to your door quickly.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main St, City, State 12345</p>
+                    <p><i class="fas fa-phone-alt"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> 123@example.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#menu" class="text-white">Menu</a></li>
+                        <li><a href="#locations" class="text-white">Locations</a></li>
+                        <li><a href="#catering" class="text-white">Catering</a></li>
+                        <li><a href="#contact" class="text-white">Contact Us</a></li>
+                        <li><a href="#careers" class="text-white">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Operating Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Monday - Friday: 11:00 AM - 17:00 PM</li>
+                        <li>Saturday: 11:00 AM - 4:00 PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-0">&copy; 2024 FoodExpress. All rights reserved.</p>
+                    <p class="mb-0">&copy; Distributed by Joel &trade;</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <script src="Js/scripts.js"></script>
+</body>
+
+</html>
